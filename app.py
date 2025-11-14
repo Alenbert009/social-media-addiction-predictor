@@ -21,7 +21,7 @@ hours_used = st.slider(
     value=1
 )
 if st.button("Predict Addiction Level"):
-     if hours_used > 6 or num_social_media==5 :
+     if hours_used >= 6 or num_social_media==5 :
         st.error("🚨 **Highly Addicted** — Very high usage and multiple apps.")
      elif (2 <= hours_used <= 4 or 4 < hours_used <= 6) and num_social_media in [2, 3, 4]:
         st.warning("⚠️ **Moderately Addicted** — Noticeable usage pattern.")
