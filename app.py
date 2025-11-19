@@ -26,35 +26,38 @@ column_names = [
     '14. Has anyone ever   left an offensive “dirty” comment on the wall of social media?',
     '15. Has anyone ever sent messages that refer to or ask about your body, sex life, or intimate subjects through social media (for example asking if you are on your period right now))?',
     '16. Has anyone ever threaten to hack your computer/mobile and cause damage if you did not conduct the sexual act requested for (for example describing giving the person oral sex)?',
-    '17. Has anyone ever sent frightening message through social to get you to perform sexual acts (for example cyber-sex)?_le',
+    '17. Has anyone ever sent frightening message through social to get you to perform sexual acts (for example cyber-sex)?',
     '18. Has anyone ever bribed you for conducting sexual acts (for example offering to send you money if you send him/her sexual obscene pictures)?',
     '19. Using Social Media, has anyone ever sexually harassed you?',
     'Facebook',
     'Instagram',
-    'Others',
     'Twitter',
-    'Whatsapp'
+    'Whatsapp',
+    'Others',
 ]
 user_input = []
 st.write("### 🔹 For harassment-related questions:")
 st.write("Use: **0 = Never, 1 = Sometimes, 2 = Once or twice**")
 for col in column_names:
-    if col in ["Facebook", "Instagram", "Others", "Twitter", "Whatsapp"]:
-        value = st.selectbox(f"{col} (0 = No, 1 = Yes)", [0, 1])
+    if col in ["Facebook", "Instagram", "Twitter", "Whatsapp","Others"]:
+        value = st.selectbox(col,[0,1],format_func=lambda x:['No','Yes'][x])
     elif col == "How many hours per day you use social media?":
-        value = st.slider(col, 0.0, 7.0, 1.0, step=0.5)
+        hours = st.slider(col, 0.0, 7.0, 1.0, step=0.5)
+        value=hours
     elif col == "When you are online, at how many social media you remain active:":
         value = st.slider(col, 0, 5, 1)
     else:
-        value=st.selectbox(col,[0, 1, 2])
+        value=st.selectbox(col,[0, 1, 2],format_func=lambda x:['Never','Sometimes','Once or Twice'][x])
     user_input.append(value)
 final_input=np.array(user_input).reshape(1,-1)
 scaled_input=scaler.transform(final_input)
 
 if st.button("Predict Addiction Level"):
      prediction = model.predict(scaled_input)[0]
+     if hours>6:
+         prediction=2
      if prediction == 1:
-        st.success("⚠️ **Moderately Addicted** — Noticeable usage pattern.")
+        st.warning("⚠️ **Moderately Addicted** — Noticeable usage pattern.")
      elif prediction == 2:
         st.error("🚨 **Highly Addicted** — Very high usage and multiple apps.")
      elif prediction == 3:
