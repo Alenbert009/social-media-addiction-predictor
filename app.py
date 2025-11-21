@@ -4,8 +4,8 @@ import numpy as np
 import joblib
 model = joblib.load("final_model.pkl")
 scaler = joblib.load("scaler.pkl")
-st.set_page_config(page_title="Social Media Addiction Predictor")
-st.title("📱 Social Media Addiction Predictor")
+st.set_page_config(page_title="Social Media Harassment Prediction")
+st.title("📱 Social Media Harassment Prediction")
 st.write("Fill in your details to check your addiction level.")
 column_names = [
     'How many hours per day you use social media?',
@@ -57,11 +57,11 @@ if st.button("Predict Addiction Level"):
      if hours>6:
          prediction=2
      if prediction == 1:
-        st.warning("⚠️ **Moderately Addicted** — Noticeable usage pattern.")
+        st.warning("⚠️ **Moderately Harassed** — Noticeable usage pattern.")
      elif prediction == 2:
-        st.error("🚨 **Highly Addicted** — Very high usage and multiple apps.")
+        st.error("🚨 **Highly Harassed** — Very high usage and multiple apps.")
      elif prediction == 3:
-        st.info("✅ **Not Addicted** — Usage seems normal.")  
+        st.info("✅ **Not Harassed** — Usage seems normal.")  
 
 
 
