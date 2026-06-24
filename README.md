@@ -2,6 +2,9 @@
 
 An end-to-end Data Science and Machine Learning project designed to analyze user behavior on social media and predict the likelihood of online harassment. This project combines comprehensive exploratory data analysis via Power BI dashboards with a predictive machine learning application deployed using Streamlit.
 
+### 🌐 Live Demo
+**Check out the live web application here:** [Social Media Harassment Prediction App](https://social-media-harassment-prediction-website.streamlit.app/)
+
 ---
 
 ## 🎯 Project Overview
@@ -22,7 +25,8 @@ The project includes a robust suite of dashboards analyzing:
 
 ### 2. Machine Learning Application (Predictive ML)
 An interactive frontend built with Streamlit (`app.py`) that acts as a risk assessment tool. 
-* **Target Variable Classification:** * 🟢 Not Harassed
+* **Target Variable Classification:** 
+    * 🟢 Not Harassed
     * 🟡 Moderately Harassed
     * 🔴 Highly Harassed
 * **Model Selection:** Evaluated multiple algorithms including Logistic Regression, Naive Bayes, and Support Vector Machines (SVM). **Random Forest** was selected as the final production model due to its superior accuracy and ability to handle non-linear behavioral data.
